@@ -1,6 +1,7 @@
 # MaxConsecutiveBPictures
 
-We can make use of A/V's H264 parsing log and a script to read through this log. 
-The parsing log includes a lot of very useful information, including the frame type and whether it is a field (top or bottom) 
-for interlaced. This script will parse the output data, and determine the Maximum number of consecutive B Pictures by looking through all
-GOPs.
+This script will calculate the maximum number of consecutive B Pictures. First, using ffprobe:
+
+ffprobe -show_frames input.ts | grep pict_type > ffprobe_output.txt
+
+With the output file containing all the information we need, a script can be used to perform the calculation.
